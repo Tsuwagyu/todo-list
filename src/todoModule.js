@@ -1,9 +1,8 @@
-export function createTask(title, description, dueDate, priority, type) {
-  return {
-    title, 
-    description,
-    dueDate,
-    priority,
-    type,
-  };
+export function toDo(title, description, dueDate, priority) {
+    return {
+        title, 
+        description, 
+        dueDate, 
+        priority 
+    }
 }
