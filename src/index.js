@@ -1,21 +1,24 @@
-import { storageModule } from "./storageModule";
+
 import { createProject } from "./projectModule";
-import { createToDo } from "./todoModule";
-import { renderSidebar, renderTasks } from "./domModule";
-import { saveToStorage, loadFromStorage } from "./storageModule";
+import { toDo } from "./todoModule";
+import { initLayout, renderSidebar } from "./domModule";
 
 let allProjects = [];
 let currentProjectIndex = 0;
 
 function init() {
 
+    initLayout();
+
     // load data from storage here
     //const storedProjects = loadFromStorage();
 
     if(allProjects.length === 0) {
-        const inbox = createProject("inbox");
+        const inbox = createProject("Inbox");
         allProjects.push(inbox);
     }
+
+    renderSidebar(allProjects);
 
     //initial render, prior to changes
     //renderSideBar(allProjects);
