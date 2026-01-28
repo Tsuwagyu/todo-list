@@ -1,17 +1,9 @@
-function projects(name) {
-
-    const toDoHolder = [];
-    const projectCollection = [];
-
-    return {
-        name,
-        toDoHolder,
-        projectCollection,
-
-        test() {
-            console.log('projects module activated');
-        }
-    };
+export class Project {
+    
+    constructor(name) {
+        this.name = name;
+        this.todoHolder = [];
+    }
 }
 
 function projectsAdd(project) {
