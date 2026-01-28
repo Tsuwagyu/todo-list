@@ -1,8 +1,18 @@
-export function toDo(title, description, dueDate, priority) {
-    return {
-        title, 
-        description, 
-        dueDate, 
-        priority 
+export class todo {
+
+
+    constructor(title, description, dueDate, priority, notes) {
+        this.title = title;
+        this.description = description;
+        this.dueDate = dueDate;
+        this.priority = priority;
+        this.notes = notes;
     }
+
+    test() {
+        console.log('todo activated!');
+    }
+
+
+
 }

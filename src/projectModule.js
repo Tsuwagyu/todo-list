@@ -1,17 +1,26 @@
-export function projectContainer(name) {
-    
-    
-    let tasks = [];
+function projects(name) {
 
+    const toDoHolder = [];
+    const projectCollection = [];
 
     return {
         name,
-        tasks,
-    
-        addTask(task) {
-            tasks.push(task);
+        toDoHolder,
+        projectCollection,
+
+        test() {
+            console.log('projects module activated');
         }
     };
+}
+
+function projectsAdd(project) {
 
 
 }
+
+function projectsRemove(project) {
+
+}
+
+
