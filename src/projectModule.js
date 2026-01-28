@@ -1,18 +1,20 @@
 export class Project {
-    
+
     constructor(name) {
         this.name = name;
         this.todoHolder = [];
     }
 }
 
-function projectsAdd(project) {
+const projectManager = {
 
+    projectCollection = [],
 
+    add(name) {
+        new Project       
+    }
+
+    remove(project) {}
+
+    get(project) {}
 }
-
-function projectsRemove(project) {
-
-}
-
-
