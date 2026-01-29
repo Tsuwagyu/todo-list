@@ -14,9 +14,14 @@ const projectManager = {
         const newProject = new Project(name);
         this.projectCollection.push(newProject);
         return newProject;   
+    },
+
+    remove(name) {
+        const index = this.projectCollection.findIndex(project => project.name === name);
+        this.projectCollection.splice(index, 1);
+    },
+
+    get(project) {
+
     }
-
-    remove(project) {}
-
-    get(project) {}
 }
