@@ -11,7 +11,9 @@ const projectManager = {
     projectCollection = [],
 
     add(name) {
-        new Project       
+        const newProject = new Project(name);
+        this.projectCollection.push(newProject);
+        return newProject;   
     }
 
     remove(project) {}
