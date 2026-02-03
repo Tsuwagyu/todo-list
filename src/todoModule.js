@@ -1,14 +1,15 @@
 export class todo {
 
 
-    constructor(title, description, dueDate, priority, notes) {
+    constructor(title, description, dueDate, priority, notes, id = crypto.randomUUID(), completed = false) {
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
         this.notes = notes;
-        this.completed = false;
-        this.id = crypto.randomUUID();
+        this.completed = completed;
+        this.id = id;
+
     }
 
     todoStatus() {
