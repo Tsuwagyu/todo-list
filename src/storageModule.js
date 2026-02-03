@@ -11,7 +11,30 @@ export const storage = {
     },
 
     load: function() { 
-        const todoListStoredData = localStorage.getItem('todoListData');
+        const todoListStoredData = localStorage.getItem('todoListData'); 
+
+        if (todoListStoredData == null) {
+            return [];
+        } else {
+
+            const parsedProjectData = JSON.parse(todoListStoredData);
+
+            let rehydratedProjectArr = []; //need to replace every item with new class instance
+
+            parsedProjectData.forEach(jsonProject => {
+                const rehydratedProject = new Project(jsonProject.name)  
+
+                rehydratedProjectArr.push(rehydratedProject);
+                
+            });
+
+
+
+
+
+        }
+
+    }
 
     
 }
