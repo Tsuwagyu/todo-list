@@ -24,9 +24,18 @@ export const storage = {
             parsedProjectData.forEach(jsonProject => {
                 const rehydratedProject = new Project(jsonProject.name)  
 
+                jsonProject.todoHolder.forEach(jsonTodo => {
+                    const rehydratedTodo = new todo(jsonTodo.title, jsonTodo.description, jsonTodo.dueDate, jsonTodo.priority, jsonTodo.notes, jsonTodo.id, jsonTodo.completed);
+                    rehydratedProject.todoHolder.push(rehydratedTodo);
+                });
+
                 rehydratedProjectArr.push(rehydratedProject);
+
+                
                 
             });
+
+            return rehydratedProjectArr
 
 
 
