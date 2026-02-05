@@ -12,16 +12,22 @@ export const domManager = {
    renderProjects: function() {
     const sidebarRef = document.getElementById('project-sidebar');
 
-    sidebarRef.innerHTML = '';
-
     projectManager.projectCollection.forEach(project => {
         const projectBtn = this.createElement('button', 'project-btn', project.name);
+        // const projectTodos = project.todoHolder;
+
 
         projectBtn.addEventListener('click', () => {
-            console.log(`You clicked ${project.name}`);
-        });
+            this.renderTodos(project);
+            console.log(`You clicked ${project.name}, and here are the todos inside:`, project.todoHolder);
+
+        }); 
+
 
         sidebarRef.appendChild(projectBtn);
+
+
+
     
     
     
@@ -30,5 +36,43 @@ export const domManager = {
 
 
 
+    
+
+
+
    },
+
+   renderTodos: function (project) {
+    
+    const todoDisplay = document.getElementById('todo-display');
+    todoDisplay.innerHTML = '';
+
+    const currentProject = project.todoHolder
+
+    currentProject.forEach(todo => {
+
+        const todoCard = this.createElement('div', 'todo-card');
+        const titleElement = this.createElement('h3', 'todo-title', todo.title);
+        const descriptionElement = this.createElement('p', 'todo-description', todo.description)
+        const dueDateElement = this.createElement('p','due-date-picker', todo.dueDate);
+        const priorityElement = this.createElement('p', 'todo-priority', todo.priority);
+        const notesElement = this.createElement('p', 'todo-notes', todo.notes);
+
+        todoCard.appendChild(titleElement);
+        todoCard.appendChild(descriptionElement);
+        todoCard.appendChild(dueDateElement);
+        todoCard.appendChild(priorityElement);
+        todoCard.appendChild(notesElement);
+
+        todoDisplay.appendChild(todoCard);
+    
+
+
+
+
+
+    })
+
+   }
+
 }
