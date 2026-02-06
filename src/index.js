@@ -35,3 +35,4 @@ localStorage.clear();
 localStorage.clear();
 
 domManager.renderProjects();
+domManager.projectAdd();
