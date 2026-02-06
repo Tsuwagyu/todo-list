@@ -1,5 +1,5 @@
 import { projectManager } from "./projectModule.js"
-
+import { Project } from "./projectModule.js";
 export const domManager = {
 
    createElement: function(tag, className, elementName = ''){ 
@@ -73,6 +73,26 @@ export const domManager = {
 
     })
 
-   }
+   },
+
+   projectAdd: function() {
+    
+    let addProjectBtn = document.getElementById('add-project-button');
+    let projectManagerArr = projectManager.projectCollection;
+
+    addProjectBtn.addEventListener('click', () => { 
+
+        console.log('new button was pressed');
+
+        let newProjectPrompt = prompt('Add project name:');
+
+        
+
+        
+
+    })
+
+
+   },
 
 }
