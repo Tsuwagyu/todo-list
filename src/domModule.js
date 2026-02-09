@@ -2,7 +2,15 @@ import { projectManager } from "./projectModule.js"
 import { Project } from "./projectModule.js";
 export const domManager = {
 
-   createElement: function(tag, className, elementName = ''){ 
+    sidebarRef: null,
+
+    init: function() {
+        this.sidebarRef = document.getElementById('project-sidebar');
+
+    },
+    
+
+   createElement: function(tag, className, elementName = '') { 
     const element = document.createElement(tag);
     if (className) element.classList.add(className);
     element.textContent = elementName;
@@ -10,7 +18,7 @@ export const domManager = {
    },
    
    renderProjects: function() {
-    const sidebarRef = document.getElementById('project-sidebar');
+
 
     projectManager.projectCollection.forEach(project => {
         const projectBtn = this.createElement('button', 'project-btn', project.name);
@@ -19,12 +27,11 @@ export const domManager = {
 
         projectBtn.addEventListener('click', () => {
             this.renderTodos(project);
-            console.log(`You clicked ${project.name}, and here are the todos inside:`, project.todoHolder);
 
         }); 
 
 
-        sidebarRef.appendChild(projectBtn);
+        this.sidebarRef.appendChild(projectBtn);
 
 
 
@@ -78,19 +85,33 @@ export const domManager = {
    projectAdd: function() {
     
     let addProjectBtn = document.getElementById('add-project-button');
-    let projectManagerArr = projectManager.projectCollection;
+
 
     addProjectBtn.addEventListener('click', () => { 
 
-        console.log('new button was pressed');
-
         let newProjectPrompt = prompt('Add project name:');
 
-        
+        let newProject = projectManager.add(newProjectPrompt);
+
+        let newProjectMade = this.createElement('button', 'project-btn', newProject.name);
+
+        newProjectMade.addEventListener('click', () => {
+            this.renderTodos(newProject);
+        });
+
+        this.sidebarRef.appendChild(newProjectMade);
 
         
+
+
+
+
+
+
 
     })
+
+    
 
 
    },

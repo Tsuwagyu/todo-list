@@ -7,7 +7,6 @@ export const storage = {
 
         localStorage.setItem('todoListData', dataString);
 
-        console.log('storage module: data saved!');
     },
 
     load: function() { 
