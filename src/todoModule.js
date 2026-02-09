@@ -24,10 +24,6 @@ export class todo {
         this.dueDate = date;
     }
 
-    test() {
-        console.log('todo activated!');
-    }
-
 
 
 }
