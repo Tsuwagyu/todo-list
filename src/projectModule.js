@@ -6,10 +6,6 @@ export class Project {
         console.log('project constructor has ran!');
     }
 
-    test() {
-        console.log('project class has ran!');
-    }
-
     removeTodo(id) {
         const index = this.todoHolder.findIndex(todo => todo.id === id);
         this.todoHolder.splice(index, 1);
@@ -24,14 +20,12 @@ export const projectManager = {
     add(name) {
         const newProject = new Project(name);
         this.projectCollection.push(newProject);
-        console.log('add method ran!')
         return newProject;   
     },
 
     remove(name) {
         const index = this.projectCollection.findIndex(project => project.name === name);
         this.projectCollection.splice(index, 1);
-        console.log('remove method ran!');
     },
  
 
