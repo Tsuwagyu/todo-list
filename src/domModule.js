@@ -1,14 +1,9 @@
 import { projectManager } from "./projectModule.js"
 import { Project } from "./projectModule.js";
+import { todo } from "./todoModule.js";
 export const domManager = {
 
-    sidebarRef: null,
-
-    init: function() {
-        this.sidebarRef = document.getElementById('project-sidebar');
-
-    },
-    
+    sidebarRef: document.getElementById('project-sidebar'),
 
    createElement: function(tag, className, elementName = '') { 
     const element = document.createElement(tag);
@@ -22,7 +17,7 @@ export const domManager = {
 
     projectManager.projectCollection.forEach(project => {
         const projectBtn = this.createElement('button', 'project-btn', project.name);
-        // const projectTodos = project.todoHolder;
+        
 
 
         projectBtn.addEventListener('click', () => {
@@ -33,11 +28,6 @@ export const domManager = {
 
         this.sidebarRef.appendChild(projectBtn);
 
-
-
-    
-    
-    
     
     });
 
@@ -101,19 +91,85 @@ export const domManager = {
 
         this.sidebarRef.appendChild(newProjectMade);
 
+    
+
+
+
+
+    });
+
+    
+
+
+   },
+
+   formReference: document.getElementById('form-container'),
+
+   todoAdd: function(project) {
+
+    let todoBtnRef = document.getElementById('add-todo-button');
+
+    todoBtnRef.addEventListener('click', () => {
+
+        this.formContainer.style.display = 'block';
         
+    })
+
+    // take the reference of todo button > click > gather data from opened form > add todo info > submit to localstorage 
 
 
 
 
 
+    
+
+
+    
+   },
+
+   gatherFormData: function() {
+
+    const submitBtnRef = document.getElementById('todo-submit'),
+
+    const formData = {
+
+        todoTitle: document.getElementById('todo-title').value,
+
+        todoDesc: document.getElementById('todo-description').value,
+
+        todoDate: document.getElementById('todo-date').value,
+
+        todoNotes: document.getElementById('todo-notes').value,
+
+        todoCompletion: document.getElementById('todo-completion').value,
+
+        todoFieldset: document.getElementById('todo-priority').value,
+
+
+
+    };
+
+    localStorage.setItem('userTodoFormData', JSON.stringify(formData));
+
+    console.log('form data saved');
+
+    todoBtnRef.addEventListener('click', () => {
+
+        // condition to ensure input fields are not null
 
 
     })
 
     
 
+    
+
+
+    
+
 
    },
+
+
 
 }
