@@ -22,12 +22,26 @@
             <label for = "todo-date">Date:</label>
             <input type = "date" id = "todo-date" name = "date">
 
+            <label for ="todo-notes">Notes</label>
+            <input type="text" id="todo-notes" placeholder="notes">
 
+            <label for = "todo-completion">Completed</label>
+            <input type="radio" id="todo-completion">
 
+            <fieldset>
+                <legend>Priority</legend>
+                <label for="todo-priority-high">High priority</label>
+                <input type = "radio" id="todo-priority-high" name = "prioAnswer">
 
+                <label for="todo-priority-medium">Medium priority</label>
+                <input type = "radio" checked="checked" id="todo-priority-medium" name= "prioAnswer">
 
+                <label for="todo-priority-low">Low priority</label>
+                <input type="radio" id="todo-priority-low" name="prioAnswer">
+            </fieldset>
 
-
+            <label for="todo-submit"></label>
+            <input type="submit" id="todo-submit" name="todo-submit">
 
         </form>
     </div>
