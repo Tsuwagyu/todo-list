@@ -112,6 +112,7 @@ export const domManager = {
     todoBtnRef.addEventListener('click', () => {
 
         this.formContainer.style.display = 'block';
+
         
     })
 
@@ -129,7 +130,7 @@ export const domManager = {
 
    gatherFormData: function() {
 
-    const submitBtnRef = document.getElementById('todo-submit'),
+    const submitBtnRef = document.getElementById('todo-submit');
 
     const formData = {
 
@@ -149,16 +150,21 @@ export const domManager = {
 
     };
 
-    localStorage.setItem('userTodoFormData', JSON.stringify(formData));
+    const formDataRef = localStorage.setItem('userTodoFormData', JSON.stringify(formData));
 
-    console.log('form data saved');
-
-    todoBtnRef.addEventListener('click', () => {
-
-        // condition to ensure input fields are not null
+    // const formDataRead = JSON.parse(formDataRef);
 
 
-    })
+    submitBtnRef.addEventListener('click', (e) => {
+
+        e.preventDefault();
+
+        formDataRef;
+
+        console.log('todo data saved');
+
+    });
+
 
     
 
