@@ -105,7 +105,7 @@ export const domManager = {
 
    formReference: document.getElementById('form-container'),
 
-   todoAdd: function(project) {
+   todoAdd: function() {
 
     let todoBtnRef = document.getElementById('add-todo-button');
 
@@ -113,15 +113,13 @@ export const domManager = {
 
         this.formContainer.style.display = 'block';
 
+
+
+
         
     })
 
-    // take the reference of todo button > click > gather data from opened form > add todo info > submit to localstorage 
-
-
-
-
-
+ // click button > display the todo > take in the 
     
 
 
@@ -132,49 +130,38 @@ export const domManager = {
 
     const submitBtnRef = document.getElementById('todo-submit');
 
-    const formData = {
+        submitBtnRef.addEventListener('click', (e) => {
 
-        todoTitle: document.getElementById('todo-title').value,
+            e.preventDefault();
 
-        todoDesc: document.getElementById('todo-description').value,
+            const formData = {
 
-        todoDate: document.getElementById('todo-date').value,
+                todoTitle: document.getElementById('todo-title').value,
 
-        todoNotes: document.getElementById('todo-notes').value,
+                todoDesc: document.getElementById('todo-description').value,
 
-        todoCompletion: document.getElementById('todo-completion').value,
+                todoDate: document.getElementById('todo-date').value,
 
-        todoFieldset: document.getElementById('todo-priority').value,
+                todoNotes: document.getElementById('todo-notes').value,
 
+                todoCompletion: document.getElementById('todo-completion').value,
 
+                todoFieldset: document.getElementById('todo-priority').value,
+            }
 
-    };
+            localStorage.setItem('userTodoFormData', JSON.stringify(formData));
 
-    const formDataRef = localStorage.setItem('userTodoFormData', JSON.stringify(formData));
-
-    // const formDataRead = JSON.parse(formDataRef);
-
-
-    submitBtnRef.addEventListener('click', (e) => {
-
-        e.preventDefault();
-
-        formDataRef;
-
-        console.log('todo data saved');
-
-    });
+            console.log(formData);
 
 
-    
 
-    
+        })
+    },
 
 
     
 
 
-   },
 
 
 
