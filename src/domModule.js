@@ -1,6 +1,7 @@
 import { projectManager } from "./projectModule.js"
 import { Project } from "./projectModule.js";
 import { todo } from "./todoModule.js";
+import { storage } from "./storageModule.js";
 export const domManager = {
 
     sidebarRef: document.getElementById('project-sidebar'),
@@ -21,6 +22,7 @@ export const domManager = {
 
 
         projectBtn.addEventListener('click', () => {
+            this.currentProject = project;
             this.renderTodos(project);
 
         }); 
@@ -86,6 +88,7 @@ export const domManager = {
         let newProjectMade = this.createElement('button', 'project-btn', newProject.name);
 
         newProjectMade.addEventListener('click', () => {
+            this.currentProject = newProject;
             this.renderTodos(newProject);
         });
 
@@ -118,8 +121,6 @@ export const domManager = {
 
         
     })
-
- // click button > display the todo > take in the 
     
 
 
@@ -149,14 +150,24 @@ export const domManager = {
                 todoFieldset: document.getElementById('todo-priority').value,
             }
 
-            localStorage.setItem('userTodoFormData', JSON.stringify(formData));
-
             console.log(formData);
+
+            let formTodo = new todo(formData.todoTitle, formData.todoDesc, formData.todoDate, formData.todoFieldset, formData.todoNotes);
+
+            this.currentProject.addTodo(formTodo);
+
+            storage.save(projectManager.projectCollection);
+
+            this.renderTodos(this.currentProject);
+
+
 
 
 
         })
     },
+
+    currentProject: null // will track which project has been clicked
 
 
     
