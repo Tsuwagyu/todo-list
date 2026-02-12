@@ -130,6 +130,7 @@ export const domManager = {
    gatherFormData: function() {
 
     const submitBtnRef = document.getElementById('todo-submit');
+    const inboxProjectRef = projectManager.projectCollection[0];
 
         submitBtnRef.addEventListener('click', (e) => {
 
@@ -147,10 +148,11 @@ export const domManager = {
 
                 todoCompletion: document.getElementById('todo-completion').value,
 
-                todoFieldset: document.getElementById('todo-priority').value,
+                todoFieldset: document.querySelector('input[name="prioAnswer"]:checked').value,
             }
 
             console.log(formData);
+            console.log(formData.todoFieldset);
 
             let formTodo = new todo(
                 formData.todoTitle, formData.todoDesc, 
@@ -158,6 +160,11 @@ export const domManager = {
                 formData.todoFieldset, 
                 formData.todoNotes);
 
+            if (this.currentProject === null) {
+
+                this.currentProject = inboxProjectRef;
+
+            }
             this.currentProject.addTodo(formTodo);
 
             storage.save(projectManager.projectCollection);
