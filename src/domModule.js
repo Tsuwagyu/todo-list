@@ -110,14 +110,13 @@ export const domManager = {
 
    todoAdd: function() {
 
-    let todoBtnRef = document.getElementById('add-todo-button');
+    const todoBtnRef = document.getElementById('add-todo-button');
 
     todoBtnRef.addEventListener('click', () => {
 
-        this.formReference.style.display = 'block';
 
-
-
+        document.getElementById('form-container').classList.toggle('hidden-items');
+        console.log('todo ref was clicked');
 
         
     })
@@ -171,6 +170,8 @@ export const domManager = {
 
             this.renderTodos(this.currentProject);
 
+
+            this.formReference.classList.add('hidden-items');
 
 
 
