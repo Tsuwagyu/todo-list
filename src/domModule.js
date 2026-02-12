@@ -114,7 +114,7 @@ export const domManager = {
 
     todoBtnRef.addEventListener('click', () => {
 
-        this.formContainer.style.display = 'block';
+        this.formReference.style.display = 'block';
 
 
 
@@ -152,7 +152,11 @@ export const domManager = {
 
             console.log(formData);
 
-            let formTodo = new todo(formData.todoTitle, formData.todoDesc, formData.todoDate, formData.todoFieldset, formData.todoNotes);
+            let formTodo = new todo(
+                formData.todoTitle, formData.todoDesc, 
+                formData.todoDate, 
+                formData.todoFieldset, 
+                formData.todoNotes);
 
             this.currentProject.addTodo(formTodo);
 
