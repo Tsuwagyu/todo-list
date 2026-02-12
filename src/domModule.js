@@ -93,6 +93,7 @@ export const domManager = {
         });
 
         this.sidebarRef.appendChild(newProjectMade);
+        storage.save(newProjectMade);
 
     
 
@@ -170,8 +171,16 @@ export const domManager = {
 
             this.renderTodos(this.currentProject);
 
+            document.querySelector('.todo-form').reset();
 
-            this.formReference.classList.add('hidden-items');
+            document.getElementById('form-container').classList.toggle('hidden-items');
+            
+           
+
+
+            
+
+
 
 
 
