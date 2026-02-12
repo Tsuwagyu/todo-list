@@ -2,10 +2,12 @@ import { todo } from "./todoModule.js";
 import { Project, projectManager } from "./projectModule.js";
 import { storage } from "./storageModule.js";
 import { domManager } from "./domModule.js";
+import "./styles.css";
 
 
 
 const loadedProjects = storage.load();
+const loadedTodos = storage.load();
 
 if (loadedProjects.length > 0) {
     projectManager.projectCollection = loadedProjects;
@@ -16,10 +18,12 @@ if (loadedProjects.length > 0) {
     projectManager.add('Inbox');
 }
 
-// const milk = new todo('Get milk', 'from store', '2024-01-15', 'low', '');
-// inbox.todoHolder.push(milk);
+
+
+
+domManager.todoAdd();
+domManager.gatherFormData();
 
 storage.save(projectManager.projectCollection);
-domManager.init();
 domManager.projectAdd();
 domManager.renderProjects();
