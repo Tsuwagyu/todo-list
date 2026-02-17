@@ -10,40 +10,42 @@
     <div id="project-sidebar"></div>
     <button id = "add-project-button">New Project</button>
     <div id="main-display">
-        <div id="todo-display"></div>
+        <div id="todo-display" class="hidden-items"></div>
         <button id = "add-todo-button">New todo</button>
-        <form action="" method = "post" class="todo-form">
-            <label for = "todo-title">Todo title</label>
-            <input type = "text" id = "todo-title" placeholder = "todo title">
+            <div id = "form-container" class="hidden-items">
+                <form action=# method = # class="todo-form">
+                    <label for = "todo-title">Todo title</label>
+                    <input type = "text" id = "todo-title" placeholder = "todo title">
 
-            <label for = "todo-description">Description</label>
-            <input type = "text" id = "todo-description" placeholder = "description">
+                    <label for = "todo-description">Description</label>
+                    <input type = "text" id = "todo-description" placeholder = "description">
+ 
+                    <label for = "todo-date">Date:</label>
+                    <input type = "date" id = "todo-date" name = "date">
 
-            <label for = "todo-date">Date:</label>
-            <input type = "date" id = "todo-date" name = "date">
+                    <label for ="todo-notes">Notes</label>
+                    <input type="text" id="todo-notes" placeholder="notes">
 
-            <label for ="todo-notes">Notes</label>
-            <input type="text" id="todo-notes" placeholder="notes">
+                    <label for = "todo-completion">Completed</label>
+                    <input type="radio" id="todo-completion" name="completion" value="complete">
 
-            <label for = "todo-completion">Completed</label>
-            <input type="radio" id="todo-completion">
+                    <fieldset id = "todo-priority">
+                        <legend>Priority</legend>
+                        <label for="todo-priority-high">High priority</label>
+                        <input type = "radio" id="todo-priority-high" name = "prioAnswer" value="high">
 
-            <fieldset>
-                <legend>Priority</legend>
-                <label for="todo-priority-high">High priority</label>
-                <input type = "radio" id="todo-priority-high" name = "prioAnswer">
+                        <label for="todo-priority-medium">Medium priority</label>
+                        <input type = "radio" checked="checked" id="todo-priority-medium" name= "prioAnswer" value="medium">
 
-                <label for="todo-priority-medium">Medium priority</label>
-                <input type = "radio" checked="checked" id="todo-priority-medium" name= "prioAnswer">
+                        <label for="todo-priority-low">Low priority</label>
+                        <input type="radio" id="todo-priority-low" name="prioAnswer" value="low">
+                    </fieldset>
 
-                <label for="todo-priority-low">Low priority</label>
-                <input type="radio" id="todo-priority-low" name="prioAnswer">
-            </fieldset>
+                    <label for="todo-submit"></label>
+                    <input type="submit" id="todo-submit" name="todo-submit">
 
-            <label for="todo-submit"></label>
-            <input type="submit" id="todo-submit" name="todo-submit">
-
-        </form>
+                </form>
+            </div>
     </div>
     
 </body>
