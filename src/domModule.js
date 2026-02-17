@@ -15,7 +15,8 @@ export const domManager = {
    
    renderProjects: function() {
 
-
+    this.sidebarRef.innerHTML = '';
+    
     projectManager.projectCollection.forEach(project => {
         const projectBtn = this.createElement('button', 'project-btn', project.name);
         
@@ -44,8 +45,9 @@ export const domManager = {
    renderTodos: function (project) {
     
     const todoDisplay = document.getElementById('todo-display');
-    todoDisplay.innerHTML = '';
 
+    todoDisplay.innerHTML = '';
+    todoDisplay.classList.remove('hidden-items');
     const currentProject = project.todoHolder
 
     currentProject.forEach(todo => {
@@ -93,7 +95,7 @@ export const domManager = {
         });
 
         this.sidebarRef.appendChild(newProjectMade);
-        storage.save(newProjectMade);
+        storage.save(projectManager.projectCollection);
 
     
 
