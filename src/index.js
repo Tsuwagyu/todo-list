@@ -7,7 +7,6 @@ import "./styles.css";
 
 
 const loadedProjects = storage.load();
-const loadedTodos = storage.load();
 
 if (loadedProjects.length > 0) {
     projectManager.projectCollection = loadedProjects;
@@ -27,3 +26,4 @@ domManager.gatherFormData();
 storage.save(projectManager.projectCollection);
 domManager.projectAdd();
 domManager.renderProjects();
+
