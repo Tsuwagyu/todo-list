@@ -16,20 +16,39 @@ export const domManager = {
    renderProjects: function() {
 
     this.sidebarRef.innerHTML = '';
+
+    
     
     projectManager.projectCollection.forEach(project => {
+        const projectContainer = this.createElement('div', 'project-container'); 
+
         const projectBtn = this.createElement('button', 'project-btn', project.name);
         
-
-
         projectBtn.addEventListener('click', () => {
             this.currentProject = project;
             this.renderTodos(project);
 
         }); 
+        const removeProjectBtn = this.createElement('button', 'remove-project-btn', 'X');
 
+        removeProjectBtn.addEventListener('click', (e) => {
 
-        this.sidebarRef.appendChild(projectBtn);
+            
+            
+            projectManager.remove(project.name);
+
+            storage.save(projectManager.projectCollection);
+
+            this.renderProjects();
+
+            
+
+            
+        });
+
+        projectContainer.appendChild(projectBtn);
+        projectContainer.appendChild(removeProjectBtn);
+        this.sidebarRef.appendChild(projectContainer);
 
     
     });
@@ -110,6 +129,8 @@ export const domManager = {
             
 
         });
+
+        
 
 
 
