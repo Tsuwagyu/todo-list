@@ -58,7 +58,22 @@ export const domManager = {
         const dueDateElement = this.createElement('p','due-date-picker', todo.dueDate);
         const priorityElement = this.createElement('p', 'todo-priority', todo.priority);
         const notesElement = this.createElement('p', 'todo-notes', todo.notes);
+        const deleteTodo = this.createElement('button', 'todo-delete', '✖');
+        const editTask = this.createElement('button', 'todo-edit', 'edit');
+        const todoCompletionToggle = this.createElement('input', 'todo-completion', '');
+        const todoCompLabel = this.createElement('label', 'todo-completion-label', 'Done?');
 
+
+        todoCompletionToggle.type = 'checkbox';
+        todoCompletionToggle.id = 'todo-completion-id';
+
+        todoCompLabel.htmlFor = 'todo-completion-id';
+        todoCompLabel.textContent = 'Complete';
+
+        todoCard.appendChild(todoCompletionToggle);
+        todoCard.appendChild(todoCompLabel);
+        todoCard.appendChild(editTask);
+        todoCard.appendChild(deleteTodo);
         todoCard.appendChild(titleElement);
         todoCard.appendChild(descriptionElement);
         todoCard.appendChild(dueDateElement);
@@ -66,6 +81,38 @@ export const domManager = {
         todoCard.appendChild(notesElement);
 
         todoDisplay.appendChild(todoCard);
+
+        deleteTodo.addEventListener('click', () => {
+
+            if (window.confirm('Please confirm task deletion') === true) {
+
+                this.currentProject.removeTodo(todo.id);
+
+                storage.save(projectManager.projectCollection);
+
+                this.renderTodos(this.currentProject);
+
+            } else {
+                '';
+            }
+
+        });
+
+        editTask.addEventListener('click', () => {
+
+            document.getElementById('todo-title').value = todo.title;
+            document.getElementById('todo-description').value = todo.description;
+            document.getElementById('todo-date').value = todo.dueDate;
+            document.getElementById('todo-notes').value = todo.notes;
+
+            document.getElementById('form-container').classList.toggle('hidden-items');
+
+            
+
+        });
+
+
+
     
 
 
@@ -73,6 +120,8 @@ export const domManager = {
 
 
     })
+
+
 
    },
 
@@ -128,6 +177,7 @@ export const domManager = {
 
     
    },
+
 
    gatherFormData: function() {
 
