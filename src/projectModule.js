@@ -11,6 +11,11 @@ export class Project {
         this.todoHolder.splice(index, 1);
         console.log(`removeToDo has ran!`);
     }
+
+    addTodo(todo) {
+        this.todoHolder.push(todo);
+        console.log('addTodo has ran');
+    }
 }
 
 export const projectManager = {
