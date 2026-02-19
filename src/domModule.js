@@ -207,46 +207,68 @@ export const domManager = {
 
         submitBtnRef.addEventListener('click', (e) => {
 
-            e.preventDefault();
+            if(this.currentTodoId === null) {
+                    
+                
 
-            const formData = {
+                e.preventDefault();
 
-                todoTitle: document.getElementById('todo-title').value,
+                const formData = {
 
-                todoDesc: document.getElementById('todo-description').value,
+                    todoTitle: document.getElementById('todo-title').value,
 
-                todoDate: document.getElementById('todo-date').value,
+                    todoDesc: document.getElementById('todo-description').value,
 
-                todoNotes: document.getElementById('todo-notes').value,
+                    todoDate: document.getElementById('todo-date').value,
 
-                todoCompletion: document.getElementById('todo-completion').value,
+                    todoNotes: document.getElementById('todo-notes').value,
 
-                todoFieldset: document.querySelector('input[name="prioAnswer"]:checked').value,
+                    todoCompletion: document.getElementById('todo-completion').value,
+
+                    todoFieldset: document.querySelector('input[name="prioAnswer"]:checked').value,
+                }
+
+                console.log(formData);
+                console.log(formData.todoFieldset);
+
+                let formTodo = new todo(
+                    formData.todoTitle, formData.todoDesc, 
+                    formData.todoDate, 
+                    formData.todoFieldset, 
+                    formData.todoNotes);
+
+                if (this.currentProject === null) {
+
+                    this.currentProject = inboxProjectRef;
+
+                }
+                this.currentProject.addTodo(formTodo);
+
+                storage.save(projectManager.projectCollection);
+
+                this.renderTodos(this.currentProject);
+
+                document.querySelector('.todo-form').reset();
+
+                document.getElementById('form-container').classList.toggle('hidden-items');
+            } else {
+                
+                const currentTask = this.currentProject.todoHolder.find(todo => todo.id === this.currentTodoId);
+
+                currentTask.title = document.getElementById('todo-title').value;
+                currentTask.description= document.getElementById('todo-description').value;
+                currentTask.dueDate = document.getElementById('todo-date').value;
+                currentTask.priority = document.querySelector('input[name="prioAnswer"]:checked').value;
+                currentTask.notes= document.getElementById('todo-notes').value;
+
+                storage.save(projectManager.projectCollection);
+                this.renderTodos(this.currentProject);
+                this.currentTodoId = null;
+                document.getElementById('form-container').classList.add('hidden-items');
+
+
+
             }
-
-            console.log(formData);
-            console.log(formData.todoFieldset);
-
-            let formTodo = new todo(
-                formData.todoTitle, formData.todoDesc, 
-                formData.todoDate, 
-                formData.todoFieldset, 
-                formData.todoNotes);
-
-            if (this.currentProject === null) {
-
-                this.currentProject = inboxProjectRef;
-
-            }
-            this.currentProject.addTodo(formTodo);
-
-            storage.save(projectManager.projectCollection);
-
-            this.renderTodos(this.currentProject);
-
-            document.querySelector('.todo-form').reset();
-
-            document.getElementById('form-container').classList.toggle('hidden-items');
             
            
 
@@ -261,7 +283,8 @@ export const domManager = {
         })
     },
 
-    currentProject: null // will track which project has been clicked
+    currentProject: null, // will track which project has been clicked
+    currentTodoId: null
 
 
     
