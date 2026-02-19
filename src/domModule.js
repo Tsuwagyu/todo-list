@@ -29,7 +29,7 @@ export const domManager = {
             this.renderTodos(project);
 
         }); 
-        const removeProjectBtn = this.createElement('button', 'remove-project-btn', 'X');
+        const removeProjectBtn = this.createElement('button', 'remove-project-btn', '✖');
 
         removeProjectBtn.addEventListener('click', (e) => {
 
@@ -117,12 +117,17 @@ export const domManager = {
 
         });
 
-        editTask.addEventListener('click', () => {
+        editTask.addEventListener('click', (e) => {
+
+            e.preventDefault();
+
+            this.currentTodoId = todo.id;
 
             document.getElementById('todo-title').value = todo.title;
             document.getElementById('todo-description').value = todo.description;
             document.getElementById('todo-date').value = todo.dueDate;
             document.getElementById('todo-notes').value = todo.notes;
+            document.querySelector(`input[name="prioAnswer"][value="${todo.priority}"]`).checked=true;
 
             document.getElementById('form-container').classList.toggle('hidden-items');
 
@@ -174,10 +179,12 @@ export const domManager = {
 
     });
 
-    
-
 
    },
+
+
+
+
 
    formReference: document.getElementById('form-container'),
 
@@ -253,7 +260,10 @@ export const domManager = {
                 document.getElementById('form-container').classList.toggle('hidden-items');
             } else {
                 
+                e.preventDefault();
+
                 const currentTask = this.currentProject.todoHolder.find(todo => todo.id === this.currentTodoId);
+                
 
                 currentTask.title = document.getElementById('todo-title').value;
                 currentTask.description= document.getElementById('todo-description').value;
