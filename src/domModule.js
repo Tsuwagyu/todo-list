@@ -70,14 +70,14 @@ export const domManager = {
     const currentProject = project.todoHolder
 
     currentProject.forEach(todo => {
-
-        const todoCard = this.createElement('div', 'todo-card');
+        const todoSummary = this.createElement('summary', 'todo-Summary');
+        const todoDetails = this.createElement('details', 'todo-details');
         const titleElement = this.createElement('h3', 'todo-title', todo.title);
-        const descriptionElement = this.createElement('p', 'todo-description', todo.description)
+        const descriptionElement = this.createElement('p', 'todo-description', `description: ${todo.description}`)
         const dueDateElement = this.createElement('p','due-date-picker', todo.dueDate);
-        const priorityElement = this.createElement('p', 'todo-priority', todo.priority);
-        const notesElement = this.createElement('p', 'todo-notes', todo.notes);
-        const deleteTodo = this.createElement('button', 'todo-delete', '✖');
+        const priorityElement = this.createElement('p', 'todo-priority', `priority: ${todo.priority}`);
+        const notesElement = this.createElement('p', 'todo-notes', `note: ${todo.notes}`);
+        const deleteTodo = this.createElement('button', 'todo-delete', 'delete');
         const editTask = this.createElement('button', 'todo-edit', 'edit');
         const todoCompletionToggle = this.createElement('input', 'todo-completion', '');
         const todoCompLabel = this.createElement('label', 'todo-completion-label', 'Done?');
@@ -87,19 +87,22 @@ export const domManager = {
         todoCompletionToggle.id = 'todo-completion-id';
 
         todoCompLabel.htmlFor = 'todo-completion-id';
-        todoCompLabel.textContent = 'Complete';
+        todoCompLabel.textContent = ' Complete';
 
-        todoCard.appendChild(todoCompletionToggle);
-        todoCard.appendChild(todoCompLabel);
-        todoCard.appendChild(editTask);
-        todoCard.appendChild(deleteTodo);
-        todoCard.appendChild(titleElement);
-        todoCard.appendChild(descriptionElement);
-        todoCard.appendChild(dueDateElement);
-        todoCard.appendChild(priorityElement);
-        todoCard.appendChild(notesElement);
+        todoDetails.appendChild(todoSummary);
+        
+        todoSummary.appendChild(titleElement);
+        todoSummary.appendChild(dueDateElement);
+        todoSummary.appendChild(todoCompletionToggle);
+        todoSummary.appendChild(todoCompLabel);
 
-        todoDisplay.appendChild(todoCard);
+        todoDetails.appendChild(descriptionElement);
+        todoDetails.appendChild(priorityElement);
+        todoDetails.appendChild(notesElement);
+        todoDetails.appendChild(editTask);
+        todoDetails.appendChild(deleteTodo);
+
+        todoDisplay.appendChild(todoDetails);
 
         deleteTodo.addEventListener('click', () => {
 
