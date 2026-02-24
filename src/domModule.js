@@ -70,7 +70,8 @@ export const domManager = {
     const currentProject = project.todoHolder
 
     currentProject.forEach(todo => {
-        const todoSummary = this.createElement('summary', 'todo-Summary');
+        const todoWrapper = this.createElement('div', 'todo-wrapper');
+        const todoSummary = this.createElement('summary', 'todo-summary');
         const todoDetails = this.createElement('details', 'todo-details');
         const titleElement = this.createElement('h3', 'todo-title', todo.title);
         const descriptionElement = this.createElement('p', 'todo-description', `description: ${todo.description}`)
@@ -84,17 +85,19 @@ export const domManager = {
 
 
         todoCompletionToggle.type = 'checkbox';
-        todoCompletionToggle.id = 'todo-completion-id';
+        todoCompletionToggle.id = `todo-completion-${todo.id}`;
 
-        todoCompLabel.htmlFor = 'todo-completion-id';
+        todoCompLabel.htmlFor = `todo-completion-${todo.id}`;
         todoCompLabel.textContent = ' Complete';
 
         todoDetails.appendChild(todoSummary);
         
         todoSummary.appendChild(titleElement);
         todoSummary.appendChild(dueDateElement);
-        todoSummary.appendChild(todoCompletionToggle);
-        todoSummary.appendChild(todoCompLabel);
+        todoWrapper.appendChild(todoCompletionToggle);
+        todoWrapper.appendChild(todoCompLabel);
+
+        todoWrapper.appendChild(todoDetails);
 
         todoDetails.appendChild(descriptionElement);
         todoDetails.appendChild(priorityElement);
@@ -102,7 +105,7 @@ export const domManager = {
         todoDetails.appendChild(editTask);
         todoDetails.appendChild(deleteTodo);
 
-        todoDisplay.appendChild(todoDetails);
+        todoDisplay.appendChild(todoWrapper);
 
         deleteTodo.addEventListener('click', () => {
 
@@ -113,11 +116,16 @@ export const domManager = {
                 storage.save(projectManager.projectCollection);
 
                 this.renderTodos(this.currentProject);
-
-            } else {
-                '';
             }
 
+
+        });
+
+        todoCompletionToggle.checked = todo.completed;
+
+        todoCompletionToggle.addEventListener('change', () => {
+            todo.todoStatus();
+            storage.save(projectManager.projectCollection);
         });
 
         editTask.addEventListener('click', (e) => {
@@ -199,7 +207,6 @@ export const domManager = {
 
 
         document.getElementById('form-container').classList.toggle('hidden-items');
-        console.log('todo ref was clicked');
 
         
     })
@@ -233,13 +240,9 @@ export const domManager = {
 
                     todoNotes: document.getElementById('todo-notes').value,
 
-                    todoCompletion: document.getElementById('todo-completion').value,
-
                     todoFieldset: document.querySelector('input[name="prioAnswer"]:checked').value,
                 }
 
-                console.log(formData);
-                console.log(formData.todoFieldset);
 
                 let formTodo = new todo(
                     formData.todoTitle, formData.todoDesc, 
