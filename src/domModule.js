@@ -171,20 +171,10 @@ export const domManager = {
 
         let newProjectPrompt = prompt('Add project name:');
 
-        let newProject = projectManager.add(newProjectPrompt);
+        projectManager.add(newProjectPrompt);
 
-        let newProjectMade = this.createElement('button', 'project-btn', newProject.name);
-
-        newProjectMade.addEventListener('click', () => {
-            this.currentProject = newProject;
-            this.renderTodos(newProject);
-        });
-
-        this.sidebarRef.appendChild(newProjectMade);
         storage.save(projectManager.projectCollection);
-
-    
-
+        this.renderProjects();
 
 
 
