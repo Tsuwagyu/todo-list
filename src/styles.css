@@ -1,4 +1,11 @@
-
+:root {
+  --main-bg-color: #FFFFFF;
+  --sidebar-color: #f2f2f0;
+  --main-text-color: #262626;
+  --divider-color: #e5e5e5;
+  --hover-color: #e8e8e6;
+  --accent-color: #b8c0ff;
+}
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -56,19 +63,30 @@ h1, h2, h3, h4, h5, h6 {
 
 header {
   grid-area: header;
+  border: 2px solid green;
 }
 
 footer {
   grid-area: footer;
+  border: 2px solid pink;
 }
 
 #main-display {
-  grid-area: main
+  grid-area: main;
+  border: 2px solid blue;
 }
 
 #project-sidebar {
+  display: flex;
+  flex-direction: column;
   grid-area: sidebar;
+  border: 1px dotted purple;
 }
+
+#project-list {
+  flex-grow: 1;
+}
+
 
 .container {
   display: grid;
