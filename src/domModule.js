@@ -4,7 +4,8 @@ import { todo } from "./todoModule.js";
 import { storage } from "./storageModule.js";
 export const domManager = {
 
-    sidebarRef: document.getElementById('project-sidebar'),
+
+    sidebarRef: document.getElementById('project-list'),
 
    createElement: function(tag, className, elementName = '') { 
     const element = document.createElement(tag);
