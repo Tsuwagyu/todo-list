@@ -105,7 +105,6 @@ footer p {
 }
 
 .project-btn {
-  flex-direction: column;
   background: none;
   padding: 0.5rem 0.75rem;
   cursor: pointer;
