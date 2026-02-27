@@ -79,7 +79,7 @@ header p {
 
 footer {
   grid-area: footer;
-  border: 1px solid var(--divider-color);
+  border-top: 1px solid var(--divider-color);
   background-color: var(--main-bg-color);
   padding: 1rem 2rem;
 
