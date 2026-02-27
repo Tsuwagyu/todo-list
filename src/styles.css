@@ -105,8 +105,6 @@ footer p {
 }
 
 .project-btn {
-  flex-grow: 1;
-  display: flex;
   flex-direction: column;
   background: none;
   padding: 0.5rem 0.75rem;
@@ -114,6 +112,8 @@ footer p {
   font-size: 1rem;
   color: var(--main-text-color);
   border-radius: 6px;
+  text-align: left;
+  border: none;
 }
 
 .project-container {
@@ -196,10 +196,6 @@ footer p {
   background-color: var(--main-bg-color);
   border: 1px solid var(--divider-color);
   transition: box-shadow 0.15s ease;
-}
-
-.todo-wrapper:hover, .todo-delete:hover {
-  background-color: var(--accent-color);
 }
 
 
