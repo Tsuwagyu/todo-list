@@ -65,7 +65,7 @@ h1, h2, h3, h4, h5, h6 {
 
 header {
   grid-area: header;
-  border: 2px solid green;
+  border: var(--main-bg-color);
   background-color: var(--main-bg-color);
   padding: 1rem 2rem;
   border-bottom: 1px solid var(--divider-color);
@@ -109,6 +109,12 @@ footer p {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  background: none;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--main-text-color);
+  border-radius: 6px;
 }
 
 .project-container {
