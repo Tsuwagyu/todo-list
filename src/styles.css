@@ -180,6 +180,10 @@ footer p {
   transition: box-shadow 0.15s ease;
 }
 
+.todo-wrapper:hover, .todo-delete:hover {
+  background-color: var(--accent-color);
+}
+
 
 .container {
   display: grid;
@@ -198,6 +202,27 @@ footer p {
 .todo-form {
   display: flex;
   flex-direction: column;
-  border-radius: 5px;
+  border-radius: 8px;
+  gap: 0.4rem;
+  border: 1px solid var(--divider-color);
+  padding: 1.5rem;
+  max-width: 480px;
+  background-color: var(--main-bg-color);
 }
+
+.todo-form input[type="text"], .todo-form input[type="date"] {
+  padding: 0.5rem 0.5rem;
+  border: 1px solid var(--divider-color);
+  border-radius: 6px;
+  color: var(--main-text-color);
+  background-color: var(--main-bg-color);
+  transition: border-color 0.15s ease;
+}
+
+.todo-form input[type="text"], .todo-form input[type="date"] {
+  background-color: var(--accent-color);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(156, 164, 235, 0.2);
+}
+
 
