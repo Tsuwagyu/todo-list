@@ -219,7 +219,7 @@ footer p {
   transition: border-color 0.15s ease;
 }
 
-.todo-form input[type="text"], .todo-form input[type="date"] {
+.todo-form input[type="text"]:focus, .todo-form input[type="date"]:focus {
   background-color: var(--accent-color);
   outline: none;
   box-shadow: 0 0 0 2px rgba(156, 164, 235, 0.2);
