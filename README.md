@@ -99,7 +99,7 @@ This project has been about implementing what we've learned in TOP until the tod
 
 To check the application state:
 1. Open DevTools (F12) // cmd + option + I
-2. Go to **Application** then **localStorage**
+2. Go to applications > localStorage
 3. You'll see two keys:
    - `todoListData` - All projects and their todos
    - `archivedTodoData` - All completed tasks
