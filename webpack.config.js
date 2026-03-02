@@ -1,4 +1,5 @@
 // webpack.config.js
+import BrowserSyncPlugin from "browser-sync-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import path from "node:path";
 
@@ -18,6 +19,11 @@ export default {
     new HtmlWebpackPlugin({
         template: "./src/template.html",
     }),
+    new BrowserSyncPlugin({
+      host:'localhost',
+      port: 3000,
+      server: {baseDir: ['dist']}
+    })
   ],
 
   module: {
@@ -25,10 +31,6 @@ export default {
         {
             test: /\.css$/i,
             use: ["style-loader", "css-loader"],
-        },
-        {
-            test: /\.html$/i,
-            use:["html-loader"],
         },
         {   test: /\.(png|svg|jpg|jpeg|gif)$/i,
             type: "asset/resource",
