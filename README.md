@@ -54,8 +54,7 @@ A vanilla JavaScript todo list application built with modular architecture, pers
 - `renderProjects()` - Displays projects in sidebar
 - `renderTodos()` - Displays active project's todos
 - `renderArchives()` - Displays completed tasks
-- `gatherFormData()` - Captures form input and creates/edits todos
-- Manages all event listeners (clicks, form submissions, checkboxes)
+- `gatherFormData()` - Captures form input and creates/edits todos and manages all event listeners (clicks, form submissions, checkboxes)
 
 **projectModule.js**
 - `Project` class: Constructor for project objects with a `todoHolder` array
