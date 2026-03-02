@@ -2,7 +2,7 @@ import { Project } from "./projectModule.js";
 import { todo } from "./todoModule.js";
 
 export const storage = {
-    save: function(data) {
+    saveProjects: function(data) {
         const dataString = JSON.stringify(data);
 
         localStorage.setItem('todoListData', dataString);

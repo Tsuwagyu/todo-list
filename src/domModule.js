@@ -2,10 +2,12 @@ import { projectManager } from "./projectModule.js"
 import { Project } from "./projectModule.js";
 import { todo } from "./todoModule.js";
 import { storage } from "./storageModule.js";
+import { archiveManager } from "./archiveModule.js";
 export const domManager = {
 
 
     sidebarRef: document.getElementById('project-list'),
+    archiveBtnRef: document.getElementById('archived-projects'),
 
    createElement: function(tag, className, elementName = '') { 
     const element = document.createElement(tag);
@@ -46,6 +48,7 @@ export const domManager = {
 
             
         });
+
 
         projectContainer.appendChild(projectBtn);
         projectContainer.appendChild(removeProjectBtn);
@@ -126,6 +129,14 @@ export const domManager = {
 
         todoCompletionToggle.addEventListener('change', () => {
             todo.todoStatus();
+            
+
+            if (todo.completed == true) {
+                archiveManager.addToArchive(todo);
+                this.currentProject.removeTodo(todo.id);
+                this.renderTodos(this.currentProject);
+            }
+
             storage.save(projectManager.projectCollection);
         });
 
