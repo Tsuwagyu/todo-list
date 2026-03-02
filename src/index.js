@@ -5,10 +5,9 @@ import { domManager } from "./domModule.js";
 import { archiveManager } from "./archiveModule.js";
 import "./styles.css";
 
-
 const loadedArchives = storage.loadArchives();
-archiveManager = loadedArchives;
-const loadedProjects = storage.load();
+archiveManager.archivedTasks = loadedArchives;
+const loadedProjects = storage.loadProjects();
 
 if (loadedProjects.length > 0) {
     projectManager.projectCollection = loadedProjects;
@@ -23,7 +22,8 @@ if (loadedProjects.length > 0) {
 domManager.todoAdd();
 domManager.gatherFormData();
 
-storage.save(projectManager.projectCollection);
+storage.saveProjects(projectManager.projectCollection);
 domManager.projectAdd();
 domManager.renderProjects();
+domManager.archiveSetup();
 
