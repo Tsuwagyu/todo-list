@@ -2,18 +2,18 @@ import { todo } from "./todoModule.js";
 import { Project, projectManager } from "./projectModule.js";
 import { storage } from "./storageModule.js";
 import { domManager } from "./domModule.js";
+import { archiveManager } from "./archiveModule.js";
 import "./styles.css";
 
 
-
+const loadedArchives = storage.loadArchives();
+archiveManager = loadedArchives;
 const loadedProjects = storage.load();
 
 if (loadedProjects.length > 0) {
     projectManager.projectCollection = loadedProjects;
-    console.log("sweet, here's the loaded projects!", projectManager.projectCollection);
 
 } else {
-    console.log("No data found, initializing default inbox.");
     projectManager.add('Inbox');
 }
 
