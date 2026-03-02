@@ -9,6 +9,11 @@ export const storage = {
 
     },
 
+    saveArchives: function(data) {
+        const dataString = JSON.stringify(data);
+        localStorage.setItem('archivedTodoData', dataString);
+    },
+
     load: function() { 
         const todoListStoredData = localStorage.getItem('todoListData'); 
 
