@@ -175,6 +175,51 @@ export const domManager = {
 
    },
 
+   renderArchives: function () {
+    const todoDisplay = document.getElementById('todo-display');
+    todoDisplay.innerHTML = '';
+    todoDisplay.classList.remove('hidden-items');
+
+    archiveManager.archivedTasks.forEach(todo => {
+        
+        const todoWrapper = this.createElement('div', 'todo-wrapper');
+        const todoSummary = this.createElement('summary', 'todo-summary');
+        const todoDetails = this.createElement('details', 'todo-details');
+        const titleElement = this.createElement('h3', 'todo-title', todo.title);
+        const descriptionElement = this.createElement('p', 'todo-description', `description: ${todo.description}`)
+        const dueDateElement = this.createElement('p','due-date-picker', todo.dueDate);
+        const priorityElement = this.createElement('p', 'todo-priority', `priority: ${todo.priority}`);
+        const notesElement = this.createElement('p', 'todo-notes', `note: ${todo.notes}`);
+        const deleteTodo = this.createElement('button', 'todo-delete', 'delete');
+
+        deleteTodo.addEventListener('click', () => {
+            archiveManager.removeFromArchive(todo.id);
+            storage.saveArchives(archiveManager.archivedTasks);
+
+            this.renderArchives();
+        })
+
+
+        todoDetails.appendChild(todoSummary);
+        
+        todoSummary.appendChild(titleElement);
+        todoSummary.appendChild(dueDateElement);
+
+
+        todoWrapper.appendChild(todoDetails);
+
+        todoDetails.appendChild(descriptionElement);
+        todoDetails.appendChild(priorityElement);
+        todoDetails.appendChild(notesElement);
+        todoDetails.appendChild(deleteTodo);
+
+        todoDisplay.appendChild(todoWrapper);
+
+
+        
+    })
+   },
+
    projectAdd: function() {
     
     let addProjectBtn = document.getElementById('add-project-button');
@@ -194,6 +239,13 @@ export const domManager = {
     });
 
 
+   },
+
+   archiveSetup: function() {
+    this.archiveBtnRef.addEventListener('click', () => {
+        this.currentProject = null;
+        this.renderArchives();
+    });
    },
 
 
