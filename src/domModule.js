@@ -209,15 +209,14 @@ export const domManager = {
 
 
    gatherFormData: function() {
-
-    const submitBtnRef = document.getElementById('todo-submit');
+    const submitFormEleRef = document.querySelector('.todo-form');
     const inboxProjectRef = projectManager.projectCollection[0];
+    /* const errorElement = document.getElementById('error'); */
 
-        submitBtnRef.addEventListener('click', (e) => {
+        submitFormEleRef.addEventListener('submit', (e) => {
 
             if(this.currentTodoId === null) {
-                    
-                
+
 
                 e.preventDefault();
 
