@@ -105,6 +105,7 @@ footer p {
 }
 
 .project-btn {
+  flex-grow: 1;
   background: none;
   padding: 0.5rem 0.75rem;
   cursor: pointer;
@@ -117,7 +118,7 @@ footer p {
 
 .project-container {
   display: flex;
-  align-items: center;
+  justify-content: space-between;
   border-radius: 6px;
   transition: background-color 0.15s ease;
 }
