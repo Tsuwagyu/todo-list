@@ -40,7 +40,7 @@ export const domManager = {
             
             projectManager.remove(project.name);
 
-            storage.save(projectManager.projectCollection);
+            storage.saveProjects(projectManager.projectCollection);
 
             this.renderProjects();
 
@@ -117,7 +117,7 @@ export const domManager = {
 
                 this.currentProject.removeTodo(todo.id);
 
-                storage.save(projectManager.projectCollection);
+                storage.saveProjects(projectManager.projectCollection);
 
                 this.renderTodos(this.currentProject);
             }
@@ -137,7 +137,8 @@ export const domManager = {
                 this.renderTodos(this.currentProject);
             }
 
-            storage.save(projectManager.projectCollection);
+            storage.saveProjects(projectManager.projectCollection);
+            storage.saveArchives(archiveManager.archivedTasks);
         });
 
         editTask.addEventListener('click', (e) => {
@@ -185,7 +186,7 @@ export const domManager = {
 
         projectManager.add(newProjectPrompt);
 
-        storage.save(projectManager.projectCollection);
+        storage.saveProjects(projectManager.projectCollection);
         this.renderProjects();
 
 
@@ -258,7 +259,7 @@ export const domManager = {
                 }
                 this.currentProject.addTodo(formTodo);
 
-                storage.save(projectManager.projectCollection);
+                storage.saveProjects(projectManager.projectCollection);
 
                 this.renderTodos(this.currentProject);
 
@@ -278,7 +279,7 @@ export const domManager = {
                 currentTask.priority = document.querySelector('input[name="prioAnswer"]:checked').value;
                 currentTask.notes= document.getElementById('todo-notes').value;
 
-                storage.save(projectManager.projectCollection);
+                storage.saveProjects(projectManager.projectCollection);
                 this.renderTodos(this.currentProject);
                 this.currentTodoId = null;
                 document.getElementById('form-container').classList.add('hidden-items');
