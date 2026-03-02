@@ -43,7 +43,7 @@ A vanilla JavaScript todo list application built with modular architecture, pers
 - **Expand/Collapse**: Click anywhere on a todo card to expand and see full details
 
 ### Viewing Archives
-- Click the **"Archive"** button in the sidebar to view all completed tasks
+- Click archive button in the sidebar to view all completed tasks
 - Delete archived tasks with the delete button (they're permanently removed)
 - Click a project name again to return to active todos
 
@@ -84,7 +84,7 @@ A vanilla JavaScript todo list application built with modular architecture, pers
 
 ## Main learning experiences
 
-This project emphasized **understanding over speed**:
+This project has been about implementing what we've learned in TOP until the todo list project
 
 1. **Module Pattern & IIFE**: Each module is a self-contained object with public methods and private data
 2. **Closures & Lexical Scoping**: Form data capture and event listener scope management
