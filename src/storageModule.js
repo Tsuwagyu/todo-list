@@ -14,7 +14,7 @@ export const storage = {
         localStorage.setItem('archivedTodoData', dataString);
     },
 
-    load: function() { 
+    loadProjects: function() { 
         const todoListStoredData = localStorage.getItem('todoListData'); 
 
         if (todoListStoredData == null) {
@@ -47,6 +47,34 @@ export const storage = {
 
         }
 
+    },
+
+    loadArchives: function() {
+        
+        let fetchedArchivedTasks= localStorage.getItem('archivedTodoData');
+
+        if (fetchedArchivedTasks === null) {
+            return [];
+        } else {
+
+            let parsedTasks = JSON.parse(fetchedArchivedTasks);
+
+            let rehydratedArchiveArr = [];
+
+            parsedTasks.forEach(jsonArchivedTask => {
+                const rehydratedArchiveTask = new todo(
+                    jsonArchivedTask.title, jsonArchivedTask.description, jsonArchivedTask.dueDate, 
+                    jsonArchivedTask.priority, jsonArchivedTask.notes, 
+                    jsonArchivedTask.id, jsonArchivedTask.completed);
+                rehydratedArchiveArr.push(rehydratedArchiveTask);
+            });
+
+            return rehydratedArchiveArr
+
+          
+
+
+        }
     }
 
     
