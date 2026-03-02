@@ -6,44 +6,60 @@
     <title>Todo list</title>
 </head>
 <body>
+    <div class="container">
 
-    <div id="project-sidebar"></div>
-    <button id = "add-project-button">New Project</button>
-    <div id="main-display">
-        <div id="todo-display" class="hidden-items"></div>
-        <button id = "add-todo-button">New todo</button>
-            <div id = "form-container" class="hidden-items">
-                <form action=# method = # class="todo-form">
-                    <label for = "todo-title">Todo title</label>
-                    <input type = "text" id = "todo-title" placeholder = "todo title">
+        <header>
+            <p>Tsu-do</p>
+        </header>
 
-                    <label for = "todo-description">Description</label>
-                    <input type = "text" id = "todo-description" placeholder = "description">
-                    <label for = "todo-date">Date:</label>
-                    <input type = "date" id = "todo-date" name = "date">
+        <div id="project-sidebar">
+            <div id="project-list"></div>
+            <button id = "add-project-button">New Project</button>
+            <button  id = "archived-projects" >Archive
+                <svg class="humbleicons hi-archive" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><g stroke="currentColor" stroke-width="2"><path stroke-linejoin="round" d="M3 5a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v3H3V5z"/><path stroke-linecap="round" d="M9.5 13h5"/><path stroke-linejoin="round" d="M4 8h16v11a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V8z"/></g></svg>
+            </button>
+        </div>
 
-                    <label for ="todo-notes">Notes</label>
-                    <input type="text" id="todo-notes" placeholder="notes">
+        <div id="main-display">
+            <div id="todo-display" class="hidden-items"></div>
+            <button id = "add-todo-button">New todo</button>
+                <div id = "form-container" class="hidden-items">
+                    <form action=# method = # class="todo-form">
+                        <label for = "todo-title">Todo title</label>
+                        <input type = "text" id = "todo-title" placeholder = "todo title" required>
 
-                    <fieldset id = "todo-priority">
-                        <legend>Priority</legend>
-                        <label for="todo-priority-high">High priority</label>
-                        <input type = "radio" id="todo-priority-high" name = "prioAnswer" value="high">
+                        <label for = "todo-description">Description</label>
+                        <input type = "text" id = "todo-description" placeholder = "description">
+                        <label for = "todo-date">Date:</label>
+                        <input type = "date" id = "todo-date" name = "date">
 
-                        <label for="todo-priority-medium">Medium priority</label>
-                        <input type = "radio" checked="checked" id="todo-priority-medium" name= "prioAnswer" value="medium">
+                        <label for ="todo-notes">Notes</label>
+                        <input type="text" id="todo-notes" placeholder="notes">
 
-                        <label for="todo-priority-low">Low priority</label>
-                        <input type="radio" id="todo-priority-low" name="prioAnswer" value="low">
-                    </fieldset>
+                        <fieldset id = "todo-priority">
+                            <legend>Priority</legend>
+                            <label for="todo-priority-high">High priority</label>
+                            <input type = "radio" id="todo-priority-high" name = "prioAnswer" value="high">
 
-                    <label for="todo-submit"></label>
-                    <input type="submit" id="todo-submit" name="todo-submit">
+                            <label for="todo-priority-medium">Medium priority</label>
+                            <input type = "radio" checked="checked" id="todo-priority-medium" name= "prioAnswer" value="medium">
+
+                            <label for="todo-priority-low">Low priority</label>
+                            <input type="radio" id="todo-priority-low" name="prioAnswer" value="low">
+                        </fieldset>
+
+                        <label for="todo-submit"></label>
+                        <input type="submit" id="todo-submit" name="todo-submit">
 
 
-                </form>
+                    </form>
 
-            </div>
+                </div>
+        </div>
+
+        <footer>
+            <p>Thank you for testing! - Tsuwagi </p>
+        </footer>
     </div>
     
 </body>
