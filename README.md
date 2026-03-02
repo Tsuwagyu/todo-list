@@ -98,7 +98,7 @@ This project emphasized **understanding over speed**:
 ## Running Tests / Debugging
 
 To check the application state:
-1. Open DevTools (F12)
+1. Open DevTools (F12) // cmd + option + I
 2. Go to **Application** then **localStorage**
 3. You'll see two keys:
    - `todoListData` - All projects and their todos
