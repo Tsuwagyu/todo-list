@@ -11,8 +11,17 @@ export const archiveManager = {
 
     removeFromArchive(id) {
 
+
+
         const index = this.archivedTasks.findIndex(task => task.id === id);
-        this.archivedTasks.splice(index, 1);
+
+        if (index == -1) {
+
+            alert('Nothing to delete');
+
+        } else { this.archivedTasks.splice(index, 1); }
+
+    
 
 
 
